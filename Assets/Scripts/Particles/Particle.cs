@@ -3,7 +3,6 @@ using UnityEngine;
 public class Particle : MonoBehaviour
 {
     [Header("Initial Conditions")]
-    public Vector3 initialPosition = new Vector3(0, 10, 0);
     public Vector3 initialVelocity = Vector3.zero;
 
     [Header("Physical Parameters")]
@@ -17,6 +16,7 @@ public class Particle : MonoBehaviour
     public LayerMask collisionMask;
     [Min(0f)] public float skin = 0.001f;
 
+    private Vector3 initialPosition;
     private Vector3 position;
     private Vector3 velocity;
     private Vector3 accumulatedForce;
@@ -32,7 +32,12 @@ public class Particle : MonoBehaviour
         ComputeRadius();
     }
 
-    private void Start() 
+    private void Awake()
+    {
+        initialPosition = transform.position;
+    }
+
+    private void Start()
     {
         ResetParticle();
     }
@@ -131,8 +136,6 @@ public class Particle : MonoBehaviour
     }
 
     public float Mass => mass;
-
     public float Radius => radius;
-
     public float Restitution => restitution;
 }

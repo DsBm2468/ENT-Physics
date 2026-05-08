@@ -50,7 +50,6 @@ public class ClothBuilder : MonoBehaviour
                 Vector3 pos = transform.position + right * x + down * y;
                 Particle p = Instantiate(particlePrefab, pos, Quaternion.identity, transform);
                 p.name = $"Cloth_{x}_{y}";
-                p.initialPosition = pos;
                 grid[x, y] = p;
             }
         }
@@ -104,7 +103,6 @@ public class ClothBuilder : MonoBehaviour
         // Creamos un transform que se queda en la posición inicial.
         var anchor = new GameObject($"Pin_{p.name}").transform;
         anchor.SetParent(transform);
-        anchor.position = p.initialPosition;
 
         var go = new GameObject($"AnchorSpring_{p.name}");
         go.transform.SetParent(transform);

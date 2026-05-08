@@ -36,7 +36,6 @@ public class RopeBuilder : MonoBehaviour
             Vector3 pos = transform.position + step * i;
             Particle p = Instantiate(particlePrefab, pos, Quaternion.identity, transform);
             p.name = $"RopeNode_{i}";
-            p.initialPosition = pos;
             ps[i] = p;
         }
 
